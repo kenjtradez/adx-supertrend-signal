@@ -258,6 +258,8 @@ def main():
             detail, price_log, status = process_pair(pair, price_log, state)
             if detail:
                 details.append(detail)
+            else:
+                details.append({"pair": pair, "action": f"SKIPPED ({status})"})
         except Exception as e:
             details.append({"pair": pair, "action": f"ERROR: {e}"})
 
