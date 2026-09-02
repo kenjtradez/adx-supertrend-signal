@@ -1,0 +1,33 @@
+name: ADX+Supertrend Signal Log (12 pairs)
+
+on:
+  schedule:
+    - cron: '5 * * * 1-5'
+  workflow_dispatch: {}
+
+jobs:
+  log-signal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pandas requests numpy
+
+      - name: Run signal logger
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python hourly_signal_update.py
+
+      - name: Commit updated log
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add price_log.csv state.json
+          git diff --staged --quiet || git commit -m "Update ADX+Supertrend signal log $(date -u +%Y-%m-%dT%H:%M)"
+          git push
