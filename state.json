@@ -35,10 +35,10 @@
     "moved_to_be": false
   },
   "GBPCAD": {
-    "state": 0,
-    "entry_price": null,
-    "stop_price": null,
-    "risk": null,
+    "state": -1,
+    "entry_price": 1.873329997062683,
+    "stop_price": 1.8733630299568176,
+    "risk": 3.3032894134477075e-05,
     "moved_to_be": false
   },
   "AUDCHF": {
