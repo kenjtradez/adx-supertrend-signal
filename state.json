@@ -30,9 +30,9 @@
   "NZDCAD": {
     "state": 1,
     "entry_price": 0.7993000149726868,
-    "stop_price": 0.7992309868335724,
+    "stop_price": 0.7993000149726868,
     "risk": 6.902813911435768e-05,
-    "moved_to_be": false
+    "moved_to_be": true
   },
   "GBPCAD": {
     "state": 0,
